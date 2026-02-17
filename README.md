@@ -59,13 +59,13 @@ Git & GitHub
 
 ▶️ How to Run the Project
 Step 1: Clone repository
-Copy code
-
 git clone https://github.com/Rajeshreddy133/City-Management-System.git
-Step 2: Open in VS Code or IntelliJ
-Step 3: Compile the project
 
+Step 2: Open in VS Code or IntelliJ
+
+Step 3: Compile the project  
 javac *.java
+
 Step 4: Run the project
 
 java Main
@@ -77,6 +77,7 @@ City Management System
 Citizen ID: 1
 Name: Rajesh
 Age: 20
+contact :7464859404
 
 Department ID: 101
 Department Name: Water Supply
