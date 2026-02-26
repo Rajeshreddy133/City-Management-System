@@ -4,6 +4,15 @@ public class CityService implements Service {
     private String serviceName;
     private String description;
 
+    public void setServiceName(String serviceName) {
+       this.serviceName = serviceName;
+    }
+    public int getServiceId() {
+       return serviceId;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
     public CityService(int serviceId, String serviceName, String description) {
         this.serviceId = serviceId;
         this.serviceName = serviceName;

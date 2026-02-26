@@ -5,7 +5,9 @@ public class Department {
     private int deptId;
     private String deptName;
     private ArrayList<Employee> employees = new ArrayList<>();
-
+    public int getDeptId() {
+       return deptId;
+    }
     public Department(int deptId, String deptName) {
         this.deptId = deptId;
         this.deptName = deptName;

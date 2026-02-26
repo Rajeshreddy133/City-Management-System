@@ -16,7 +16,11 @@ public class Main {
             System.out.println("5.Add Employee");
             System.out.println("6. Add Service ");;
             System.out.println("7. View Services ");
-            System.out.println("8. Exit");
+            System.out.println("8. Delete Citizen");
+            System.out.println("9. Update Citizen");
+            System.out.println("10. Deletion Service");
+            System.out.println("11 Exit.");
+
             System.out.print("Choose option: ");
 
             int choice = sc.nextInt();
@@ -113,11 +117,32 @@ public class Main {
                 case 7:
                     city.displayServices();
                     break;
-
                 case 8:
+                    System.out.print("Enter Citizen ID to Delete: ");
+                    int delId = sc.nextInt();
+                    city.deleteCitizen(delId);
+                    break;
+
+                case 9:
+                    System.out.print("Enter Citizen ID to Update: ");
+                    int upId = sc.nextInt();
+                    sc.nextLine();
+                    System.out.print("Enter New Name: ");
+                    String newName = sc.nextLine();
+                    System.out.print("Enter New Contact: ");
+                    String newContact = sc.nextLine();
+                    city.updateCitizen(upId, newName, newContact);
+                    break;
+
+                    case 10:
+                    System.out.print("Enter Service ID to Delete: ");
+                    int delServiceId = sc.nextInt();
+                    city.deleteService(delServiceId);
+                    break;
+
+                case 11:
                     System.out.println("Exiting System...");
                     System.exit(0);
-
                 default:
                     System.out.println("Invalid Choice!");
             }
