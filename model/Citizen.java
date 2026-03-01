@@ -1,7 +1,11 @@
+package model;
 public class Citizen extends Person {
 
     private String address;
     private int age;
+    
+    public String getAddress() { return address; }
+    public int getAge() { return age; }
 
     public Citizen(int id, String name, String contact, String address, int age) {
         super(id, name, contact);

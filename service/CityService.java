@@ -1,3 +1,4 @@
+package model;
 public class CityService implements Service {
 
     private int serviceId;

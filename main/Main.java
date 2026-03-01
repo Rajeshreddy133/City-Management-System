@@ -1,11 +1,13 @@
-import java.util.Scanner;
-
+package main;
+import java.util.*;
+import model.*;
 public class Main {
 
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
         City city = new City("Smart City");
+        city.loadCitizensFromFile();
 
         while (true) {
             System.out.println("\n===== CITY MANAGEMENT SYSTEM =====");
@@ -23,7 +25,14 @@ public class Main {
 
             System.out.print("Choose option: ");
 
-            int choice = sc.nextInt();
+            int choice=0;
+            try{
+                choice=sc.nextInt();
+            }
+            catch(Exception e){
+                System.out.println("Invalid Input!");
+                sc.nextLine();
+            }
 
             switch (choice) {
 
@@ -141,6 +150,7 @@ public class Main {
                     break;
 
                 case 11:
+                    city.saveCitizensToFile();
                     System.out.println("Exiting System...");
                     System.exit(0);
                 default:

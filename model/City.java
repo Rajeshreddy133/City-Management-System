@@ -1,5 +1,6 @@
+package model;
 import java.util.ArrayList;
-
+import java.io.*;
 public class City {
 
     private String cityName;
@@ -120,6 +121,49 @@ public class City {
         }
         if (!found) {
            System.out.println("Service Not Found!");
+        }
+    }
+    public void saveCitizensToFile() {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("citizens.txt"));
+
+            for (Citizen c : citizens) {
+                writer.write(c.getId() + "," +
+                         c.getName() + "," +
+                         c.getContact() + "," +
+                         c.getAddress() + "," +
+                         c.getAge());
+                writer.newLine();
+            }
+
+            writer.close();
+            System.out.println("Citizens saved to file successfully!");
+        } catch (IOException e) {
+            System.out.println("Error saving file.");
+        }
+    }
+    public void loadCitizensFromFile() {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("citizens.txt"));
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(",");
+
+                int id = Integer.parseInt(data[0]);
+                String name = data[1];
+                String contact = data[2];
+                String address = data[3];
+                int age = Integer.parseInt(data[4]);
+
+                Citizen citizen = new Citizen(id, name, contact, address, age);
+                citizens.add(citizen);
+            }
+
+            reader.close();
+            System.out.println("Citizens loaded from file!");
+        } catch (IOException e) {
+            System.out.println("No previous citizen data found.");
         }
     }
 }
