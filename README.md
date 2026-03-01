@@ -24,14 +24,22 @@ Polymorphism – (Can be implemented for method flexibility)
 
 🏗️ Project Structure
 
-
-City-Management-System/
+CityManagementSystem/
 │
-├── Citizen.java
-├── Department.java
-├── Service.java
-├── Main.java
-└── README.md
+├── model/
+│   ├── Person.java
+│   ├── Citizen.java
+│   ├── Employee.java
+│   ├── Department.java
+│   ├── City.java
+│   ├── CityService.java
+│   └── Service.java
+│
+├── main/
+│   └── Main.java
+│
+└── citizens.txt
+
 
 👤 Citizen Class
 
@@ -42,6 +50,7 @@ Age
 Functions:
 Display citizen details
 
+
 🏢 Department Class
 
 Stores department information such as:
@@ -49,6 +58,7 @@ Department ID
 Department Name
 Functions:
 Display department details
+
 
 ⚙️ Features
 
@@ -58,12 +68,14 @@ Add department details
 Display department information
 Modular and easy to extend
 
+
 💻 Technologies Used
 
 Java
 Object-Oriented Programming
 VS Code / IntelliJ IDEA
 Git & GitHub
+
 
 ▶️ How to Run the Project
 
@@ -73,11 +85,11 @@ git clone https://github.com/Rajeshreddy133/City-Management-System.git
 Step 2: Open in VS Code or IntelliJ
 
 Step 3: Compile the project  
-javac *.java
+javac -d out model\*.java main\*.java
 
 Step 4: Run the project
 
-java Main
+ java -cp out main.Main
 
 📷 Sample Output
 
