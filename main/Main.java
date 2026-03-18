@@ -21,8 +21,13 @@ public class Main {
             System.out.println("8. Delete Citizen");
             System.out.println("9. Update Citizen");
             System.out.println("10. Deletion Service");
-            System.out.println("11 Exit.");
-
+            System.out.println("11. Search Citizen by ID");
+            System.out.println("12. Search Citizen by Name");
+            System.out.println("13. Add Service Request");
+            System.out.println("14. View Requests");
+            System.out.println("15. Complete Request");
+            System.out.println("16. View Report");
+            System.out.println("17 Exit.");
             System.out.print("Choose option: ");
 
             int choice=0;
@@ -53,9 +58,18 @@ public class Main {
                     System.out.print("Enter Age: ");
                     int age = sc.nextInt();
 
+                    if (age <= 0) {
+                        System.out.println("Invalid Age!");
+                         break;
+                    }
+
+                    if (city.isCitizenExists(id)) {
+                        System.out.println("Citizen ID already exists!");
+                        break;
+                    }
+
                     Citizen citizen = new Citizen(id, name, contact, address, age);
                     city.addCitizen(citizen);
-                    System.out.println("Citizen Added Successfully!");
                     break;
 
                 case 2:
@@ -143,13 +157,70 @@ public class Main {
                     city.updateCitizen(upId, newName, newContact);
                     break;
 
-                    case 10:
+                case 10:
                     System.out.print("Enter Service ID to Delete: ");
                     int delServiceId = sc.nextInt();
                     city.deleteService(delServiceId);
                     break;
 
                 case 11:
+                    System.out.print("Enter ID: ");
+                    int sid = sc.nextInt();
+                    city.searchCitizenById(sid);
+                    break;
+
+                case 12:
+                    sc.nextLine();
+                    System.out.print("Enter Name: ");
+                    String sname = sc.nextLine();
+                    city.searchCitizenByName(sname);
+                    break;
+                case 13:
+                    System.out.print("Enter Request ID: ");
+                    int rid = sc.nextInt();
+
+                    System.out.print("Enter Citizen ID: ");
+                    int cid = sc.nextInt();
+
+                    System.out.print("Enter Service ID: ");
+                    int serId = sc.nextInt();
+
+                    Citizen foundCitizen = null;
+                    CityService foundService = null;
+
+                    for (Citizen c : city.getCitizens()) {
+                       if (c.getId() == cid) {
+                           foundCitizen = c;
+                        }
+                    }
+
+                    for (CityService s : city.getServices()) {
+                        if (s.getServiceId() == serId) {
+                           foundService = s;
+                        }
+                    }
+
+                    if (foundCitizen != null && foundService != null) {
+                        ServiceRequest req = new ServiceRequest(rid, foundCitizen, foundService);
+                        city.addServiceRequest(req);
+                    } else {
+                        System.out.println("Invalid Citizen or Service!");
+                    }
+                    break;
+
+                case 14:
+                    city.viewRequests();
+                     break;
+
+                case 15:
+                    System.out.print("Enter Request ID: ");
+                    int crid = sc.nextInt();
+                    city.completeRequest(crid);
+                    break;
+                case 16:
+                    city.showReport();
+                    break;
+                case 17:
                     city.saveCitizensToFile();
                     System.out.println("Exiting System...");
                     System.exit(0);
