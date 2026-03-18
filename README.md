@@ -1,31 +1,30 @@
-city-Management-System
-
 🏙️ City Management System (Java OOP Project)
 
 📌 Project Description
 
-The City Management System is a Java-based application developed using Object-Oriented Programming (OOP) concepts. This system helps manage city-related information such as citizens and departments in an organized and efficient way.
-The project demonstrates how OOP principles can be used to design scalable, maintainable, and modular software systems.
+The City Management System is a Java-based application developed using Object-Oriented Programming (OOP) principles. It manages citizens, departments, employees, services, and service requests efficiently. The project demonstrates real-world use of OOP concepts such as encapsulation, abstraction, inheritance, and polymorphism.
 
 🎯 Objectives
 
-To implement Object-Oriented Programming concepts in Java
-To manage citizen and department information
-To design a modular and structured system
-To demonstrate real-world application of Java OOP
+Implement Object-Oriented Programming concepts in Java
+Manage citizens, departments, employees, and services
+Handle service requests with status workflow (Pending → In Progress → Completed)
+Provide a modular and maintainable system for city management
+Demonstrate practical Java OOP application
 
 🧠 OOP Concepts Used
 
-This project uses the following OOP principles:
 Encapsulation – Protecting data using private variables and public methods
-Abstraction – Showing essential features and hiding implementation details
-Inheritance – (Can be extended for future modules)
-Polymorphism – (Can be implemented for method flexibility)
+
+Abstraction – Exposing only essential information
+
+Inheritance – Citizen and Employee inherit from Person
+
+Polymorphism – Flexible method implementations for future enhancements
 
 🏗️ Project Structure
 
 CityManagementSystem/
-│
 ├── model/
 │   ├── Person.java
 │   ├── Citizen.java
@@ -33,89 +32,133 @@ CityManagementSystem/
 │   ├── Department.java
 │   ├── City.java
 │   ├── CityService.java
-│   └── Service.java
-│
+│   ├── Service.java
+│   └── ServiceRequest.java
 ├── main/
 │   └── Main.java
-│
 └── citizens.txt
-
 
 👤 Citizen Class
 
-Stores citizen information such as:
-Citizen ID
-Name
-Age
-Functions:
-Display citizen details
+Stores citizen information: ID, Name, Age, Contact, Address
+
+Functions: Add, Display, Update, Delete, Search
 
 
 🏢 Department Class
 
-Stores department information such as:
-Department ID
-Department Name
-Functions:
-Display department details
+Stores department information: Department ID, Department Name, Employees
+
+Functions: Add Employee, Display Department
 
 
 ⚙️ Features
 
-Add citizen details
-Display citizen information
-Add department details
-Display department information
-Modular and easy to extend
+Citizens: Add, View, Update, Delete, Search by ID/Name
+
+Departments: Add, View, Manage Employees
+
+Employees: Add to departments, View details
+
+Services: Add, View, Delete
+
+Service Requests: Add request, View requests, Update status (Pending → In Progress → Completed)
+
+Reports: View basic summaries of citizens, services, and requests
+
+Fully modular, easy to extend for future enhancements
 
 
 💻 Technologies Used
 
-Java
-Object-Oriented Programming
-VS Code / IntelliJ IDEA
-Git & GitHub
+Java (OOP)
 
+VS Code / IntelliJ IDEA
+
+
+Git & GitHub
 
 ▶️ How to Run the Project
 
-Step 1: Clone repository
-git clone https://github.com/Rajeshreddy133/City-Management-System.git
+1.Clone the repository:
 
-Step 2: Open in VS Code or IntelliJ
+   git clone https://github.com/Rajeshreddy133/City-Management-System.git
 
-Step 3: Compile the project  
-javac -d out model\*.java main\*.java
+2.Open in VS Code or IntelliJ
 
-Step 4: Run the project
+3.Compile the project:
 
- java -cp out main.Main
+   javac -d out model/*.java main/*.java
+
+4.Run the project:
+
+   java -cp out main.Main
+
 
 📷 Sample Output
+===== CITY MANAGEMENT SYSTEM =====
+Choose option: 1
+Enter ID: 101
+Enter Name: Alice
+Enter Contact: 1234567890
+Enter Address: 12 Maple St
+Enter Age: 28
+Citizen Added Successfully!
 
-City Management System
+Choose option: 6
+Enter Service ID: 301
+Enter Service Name: Vaccination
+Enter Description: Free vaccination
+Service Added Successfully!
 
-Citizen ID: 1
-Name: Rajesh
-Age: 20
-contact :7464859404
+Choose option: 13
+Enter Request ID: 401
+Enter Citizen ID: 101
+Enter Service ID: 301
+Service Request Added Successfully!
 
-Department ID: 101
-Department Name: Water Supply
+Choose option: 14
+---- Service Requests List ----
+Request ID: 401
+Citizen: Alice
+Service ID: 301
+Status: Pending
+----------------------
 
+Choose option: 15
+Enter Request ID: 401
+Status Updated! → Status now In Progress
 
+Choose option: 15
+Enter Request ID: 401
+Status Updated! → Status now Completed
+
+Choose option: 14
+---- Service Requests List ----
+Request ID: 401
+Citizen: Alice
+Service ID: 301
+Status: Completed
+----------------------
 🚀 Future Enhancements
 
-Add database connectivity (MySQL)
-Add GUI using Java Swing or JavaFX
-Add more modules like Services, Employees
-Add user input functionality
+Add database connectivity (MySQL or SQLite)
+
+Implement GUI using Java Swing or JavaFX
+
+Assign employees to service requests automatically
+
+Generate advanced reports and analytics
+
+Add authentication and user roles
+
+Include search, filters, and sorting for citizens, services, and requests
+
 
 👨‍💻 Author
 
-Rajesh Reddy
-B.Tech Student
-Java Developer
+Rajesh Reddy – B.Tech Student | Java Developer
+
 
 📄 License
 
