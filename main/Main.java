@@ -25,7 +25,7 @@ public class Main {
             System.out.println("12. Search Citizen by Name");
             System.out.println("13. Add Service Request");
             System.out.println("14. View Requests");
-            System.out.println("15. Complete Request");
+            System.out.println("15. Update Request Status");
             System.out.println("16. View Report");
             System.out.println("17 Exit.");
             System.out.print("Choose option: ");
@@ -213,9 +213,10 @@ public class Main {
                      break;
 
                 case 15:
+                    city.viewRequests();
                     System.out.print("Enter Request ID: ");
                     int crid = sc.nextInt();
-                    city.completeRequest(crid);
+                    city.updateRequestStatus(crid);
                     break;
                 case 16:
                     city.showReport();

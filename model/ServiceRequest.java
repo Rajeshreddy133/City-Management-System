@@ -13,18 +13,23 @@ public class ServiceRequest {
         this.status = "Pending";
     }
 
-    public int getRequestId() {
-        return requestId;
-    }
-
-    public void completeRequest() {
-        status = "Completed";
+    public int getRequestId() { return requestId; }
+    public String getStatus() { return status; }
+    
+    public void updateStatus() {
+        if (status.equals("Pending")) {
+            status = "In Progress";
+        } else if (status.equals("In Progress")) {
+            status = "Completed";
+        } else {
+            System.out.println("Already Completed!");
+        }
     }
 
     public void display() {
         System.out.println("Request ID: " + requestId);
         System.out.println("Citizen: " + citizen.getName());
-        System.out.println("Service: " + service.getServiceId());
+        System.out.println("Service ID: " + service.getServiceId());
         System.out.println("Status: " + status);
         System.out.println("----------------------");
     }

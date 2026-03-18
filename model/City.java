@@ -215,16 +215,18 @@ public class City {
         }
     }
 
-    public void completeRequest(int id) {
+    public void updateRequestStatus(int id) {
         for (ServiceRequest r : requests) {
             if (r.getRequestId() == id) {
-                r.completeRequest();
-                System.out.println("Request Completed!");
+                System.out.println("Before Update: " + r.getStatus());
+                r.updateStatus();
+                System.out.println("After Update: " + r.getStatus());
                 return;
             }
         }
-        System.out.println("Request Not Found!");
+        System.out.println("Request Not Found!"); 
     }
+
     public void showReport() {
         System.out.println("Total Citizens: " + citizens.size());
         System.out.println("Total Departments: " + departments.size());
