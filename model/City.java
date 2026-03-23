@@ -256,4 +256,60 @@ public class City {
             }
         }
     }
+    public void saveRequestsToFile() {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("requests.txt"));
+
+            for (ServiceRequest r : requests) {
+                writer.write(
+                    r.getRequestId() + "," +
+                    r.getCitizen().getId() + "," +
+                    r.getService().getServiceId() + "," +
+                    r.getStatus()
+                );
+                writer.newLine();
+            }
+
+            writer.close();
+            System.out.println("Requests saved!");
+        } catch (Exception e) {
+            System.out.println("Error saving requests!");
+        }
+    }
+    public void loadRequestsFromFile() {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("requests.txt"));
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(",");
+
+                int rid = Integer.parseInt(data[0]);
+                int cid = Integer.parseInt(data[1]);
+                int sid = Integer.parseInt(data[2]);
+                String status = data[3];
+
+                Citizen foundCitizen = null;
+                CityService foundService = null;
+
+                for (Citizen c : citizens) {
+                    if (c.getId() == cid) foundCitizen = c;
+                }
+
+                for (CityService s : services) {
+                    if (s.getServiceId() == sid) foundService = s;
+                }
+
+                if (foundCitizen != null && foundService != null) {
+                    ServiceRequest req = new ServiceRequest(rid, foundCitizen, foundService, "Medium", "Loaded");
+                    requests.add(req);
+                }
+            }
+
+            reader.close();
+            System.out.println("Requests loaded!");
+        } catch (Exception e) {
+            System.out.println("No previous requests found.");
+        }
+    }
 }

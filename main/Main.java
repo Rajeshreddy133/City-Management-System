@@ -9,6 +9,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         City city = new City("Smart City");
         city.loadCitizensFromFile();
+        city.loadRequestsFromFile();
         int id = city.getCitizens().size() + 1;
         ArrayList<User> users = new ArrayList<>();
         users.add(new User("admin", "1234", "admin"));
@@ -60,6 +61,7 @@ public class Main {
                    city.viewRequests();
                    break;
                 case 4:
+                    city.saveRequestsToFile();
                     return;
             }
         }

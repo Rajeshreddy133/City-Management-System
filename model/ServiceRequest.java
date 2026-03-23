@@ -42,4 +42,7 @@ public class ServiceRequest {
     public Citizen getCitizen() {
         return citizen;
     }
+    public CityService getService() {
+        return service;
+    }
 }
