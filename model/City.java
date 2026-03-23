@@ -13,6 +13,7 @@ public class City {
     }
 
     public void addCitizen(Citizen citizen) {
+        log("Citizen added: " + citizen.getName());
         citizens.add(citizen);
     }
 
@@ -239,6 +240,20 @@ public class City {
 
         if (citizens.size() > 0) {
            System.out.println("Average Age: " + (totalAge / citizens.size()));
+        }
+    }
+    public void log(String msg){
+        try{
+            FileWriter fw = new FileWriter("log.txt", true);
+            fw.write(msg + "\n");
+            fw.close();
+        }catch(Exception e){}
+    }
+    public void viewRequestsByCitizen(int citizenId){
+        for(ServiceRequest r : requests){
+            if(r.getCitizen().getId() == citizenId){
+                r.display();
+            }
         }
     }
 }

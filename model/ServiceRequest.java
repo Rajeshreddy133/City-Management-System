@@ -5,11 +5,15 @@ public class ServiceRequest {
     private Citizen citizen;
     private CityService service;
     private String status;
+    private String priority;
+    private String date;
 
-    public ServiceRequest(int requestId, Citizen citizen, CityService service) {
+    public ServiceRequest(int requestId, Citizen citizen, CityService service, String priority, String date) {
         this.requestId = requestId;
         this.citizen = citizen;
         this.service = service;
+        this.priority = priority;
+        this.date = date;
         this.status = "Pending";
     }
 
@@ -31,6 +35,11 @@ public class ServiceRequest {
         System.out.println("Citizen: " + citizen.getName());
         System.out.println("Service ID: " + service.getServiceId());
         System.out.println("Status: " + status);
+        System.out.println("Priority: " + priority);
+        System.out.println("Date: " + date);
         System.out.println("----------------------");
+    }
+    public Citizen getCitizen() {
+        return citizen;
     }
 }
