@@ -19,6 +19,20 @@ public class ServiceRequest {
 
     public int getRequestId() { return requestId; }
     public String getStatus() { return status; }
+    public String getPriority() {
+        return priority;
+    }
+
+    public String getDate() {
+       return date;
+    }
+
+    public Citizen getCitizen() {
+        return citizen;
+    }
+    public CityService getService() {
+        return service;
+    }
     
     public void updateStatus() {
         if (status.equals("Pending")) {
@@ -39,10 +53,5 @@ public class ServiceRequest {
         System.out.println("Date: " + date);
         System.out.println("----------------------");
     }
-    public Citizen getCitizen() {
-        return citizen;
-    }
-    public CityService getService() {
-        return service;
-    }
+    
 }

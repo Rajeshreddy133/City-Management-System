@@ -1,5 +1,6 @@
 package model;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.io.*;
 public class City {
 
@@ -229,19 +230,38 @@ public class City {
     }
 
     public void showReport() {
+        System.out.println("\n===== CITY REPORT =====");
+
         System.out.println("Total Citizens: " + citizens.size());
         System.out.println("Total Departments: " + departments.size());
         System.out.println("Total Services: " + services.size());
+        System.out.println("Total Requests: " + requests.size());
 
         int totalAge = 0;
         for (Citizen c : citizens) {
-           totalAge += c.getAge();
+            totalAge += c.getAge();
         }
 
         if (citizens.size() > 0) {
-           System.out.println("Average Age: " + (totalAge / citizens.size()));
+            System.out.println("Average Age: " + (totalAge / citizens.size()));
         }
+
+        int pending = 0, completed = 0;
+
+        for (ServiceRequest r : requests) {
+            if (r.getStatus().equals("Pending")) {
+                pending++;
+            } else if (r.getStatus().equals("Completed")) {
+                completed++;
+            }
+        }
+
+        System.out.println("Pending Requests: " + pending);
+        System.out.println("Completed Requests: " + completed);
+
+        System.out.println("==============================");
     }
+
     public void log(String msg){
         try{
             FileWriter fw = new FileWriter("log.txt", true);
@@ -249,12 +269,59 @@ public class City {
             fw.close();
         }catch(Exception e){}
     }
+
     public void viewRequestsByCitizen(int citizenId){
         for(ServiceRequest r : requests){
             if(r.getCitizen().getId() == citizenId){
                 r.display();
             }
         }
+    }
+
+    public void sortRequestsByPriority(){
+        requests.sort((a, b) -> b.getPriority().compareTo(a.getPriority()));
+        System.out.println("Requests sorted by priority!");
+    }
+
+    public void searchRequestById(int id){
+        for(ServiceRequest r : requests){
+            if(r.getRequestId() == id){
+                r.display();
+                return;
+            }
+        }
+        System.out.println("Request Not Found!");
+    }
+
+    public void deleteRequest(int id){
+        for(ServiceRequest r : requests){
+            if(r.getRequestId() == id){
+                requests.remove(r);
+                System.out.println("Request Deleted!");
+                return;
+            }
+        }
+         System.out.println("Request Not Found!");
+    }
+
+    public void mostUsedService(){
+        HashMap<Integer, Integer> count = new HashMap<>();
+
+        for(ServiceRequest r : requests){
+            int sid = r.getService().getServiceId();
+            count.put(sid, count.getOrDefault(sid, 0) + 1);
+        }
+
+        int max = 0, serviceId = -1;
+
+        for(int key : count.keySet()){
+            if(count.get(key) > max){
+                max = count.get(key);
+                serviceId = key;
+            }
+        }
+
+        System.out.println("Most Used Service ID: " + serviceId);
     }
     public void saveRequestsToFile() {
         try {
@@ -273,7 +340,27 @@ public class City {
             writer.close();
             System.out.println("Requests saved!");
         } catch (Exception e) {
+            e.printStackTrace(); 
             System.out.println("Error saving requests!");
+        }
+    }
+    public void saveServicesToFile() {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("services.txt"));
+
+            for (CityService s : services) {
+                writer.write(
+                    s.getServiceId() + "," +
+                    s.getServiceName() + "," +
+                    s.getDescription()
+                );
+                writer.newLine();
+            }
+
+            writer.close();
+            System.out.println("Services saved!");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
     public void loadRequestsFromFile() {
@@ -310,6 +397,27 @@ public class City {
             System.out.println("Requests loaded!");
         } catch (Exception e) {
             System.out.println("No previous requests found.");
+        }
+    }
+        public void loadServicesFromFile() {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("services.txt"));
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(",");
+
+                int id = Integer.parseInt(data[0]);
+                String name = data[1];
+                String desc = data[2];
+
+                services.add(new CityService(id, name, desc));
+            }
+
+            reader.close();
+            System.out.println("Services loaded!");
+        } catch (IOException e) {
+            System.out.println("No previous services found.");
         }
     }
 }

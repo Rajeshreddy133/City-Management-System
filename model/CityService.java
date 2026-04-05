@@ -1,22 +1,34 @@
-package model;
+package model;   // 🔥 MUST BE FIRST LINE
+
 public class CityService implements Service {
 
     private int serviceId;
     private String serviceName;
     private String description;
 
-    public void setServiceName(String serviceName) {
-       this.serviceName = serviceName;
-    }
-    public int getServiceId() {
-       return serviceId;
-    }
-    public void setDescription(String description) {
-        this.description = description;
-    }
     public CityService(int serviceId, String serviceName, String description) {
         this.serviceId = serviceId;
         this.serviceName = serviceName;
+        this.description = description;
+    }
+
+    public int getServiceId() {
+        return serviceId;
+    }
+
+    public String getServiceName() {   // ✅ REQUIRED
+        return serviceName;
+    }
+
+    public String getDescription() {   // ✅ REQUIRED
+        return description;
+    }
+
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
+    }
+
+    public void setDescription(String description) {
         this.description = description;
     }
 
