@@ -125,3 +125,36 @@ box-shadow:
 rgba(0,0,0,.1);
 
 }
+.form{
+
+padding:40px;
+
+display:flex;
+
+gap:20px;
+
+}
+
+input{
+
+padding:10px;
+
+}
+
+table{
+
+width:80%;
+
+margin:auto;
+
+border-collapse:collapse;
+
+}
+
+th,td{
+
+border:1px solid gray;
+
+padding:10px;
+
+}
