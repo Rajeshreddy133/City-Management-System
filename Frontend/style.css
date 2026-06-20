@@ -1,15 +1,99 @@
-body{
+*{
 
-text-align:center;
+margin:0;
 
-padding-top:100px;
+padding:0;
 
-background:#f0f4ff;
+box-sizing:border-box;
 
 }
 
-h1{
+body{
 
-color:blue;
+font-family:Arial;
+
+background:#eef4ff;
+
+}
+
+nav{
+
+display:flex;
+
+justify-content:
+space-between;
+
+padding:20px;
+
+background:#0f172a;
+
+color:white;
+
+}
+
+ul{
+
+display:flex;
+
+gap:20px;
+
+list-style:none;
+
+}
+
+.hero{
+
+text-align:center;
+
+padding:100px;
+
+}
+
+.hero h1{
+
+font-size:50px;
+
+}
+
+button{
+
+margin-top:20px;
+
+padding:12px 20px;
+
+background:blue;
+
+color:white;
+
+border:none;
+
+border-radius:10px;
+
+}
+
+.cards{
+
+display:grid;
+
+grid-template-columns:
+repeat(3,1fr);
+
+gap:20px;
+
+padding:40px;
+
+}
+
+.card{
+
+background:white;
+
+padding:30px;
+
+border-radius:15px;
+
+box-shadow:
+0 5px 15px
+rgba(0,0,0,.1);
 
 }
