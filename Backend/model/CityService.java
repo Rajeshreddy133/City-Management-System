@@ -1,4 +1,4 @@
-package model;   // 🔥 MUST BE FIRST LINE
+package model;  
 
 public class CityService implements Service {
 
@@ -16,11 +16,11 @@ public class CityService implements Service {
         return serviceId;
     }
 
-    public String getServiceName() {   // ✅ REQUIRED
+    public String getServiceName() {   
         return serviceName;
     }
 
-    public String getDescription() {   // ✅ REQUIRED
+    public String getDescription() {  
         return description;
     }
 
